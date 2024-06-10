@@ -12,7 +12,7 @@ function xxHashAddon(key) {
   return xxh64.digest()
 }
 
-async function xxHashWasm(key) {
+function xxHashWasm(key) {
   xxhashwasm().then(hasher => hasher.h64(key))
 }
 
