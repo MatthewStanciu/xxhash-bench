@@ -1,3 +1,5 @@
+// Originally written by creationix for encantis: https://github.com/creationix/encantis/blob/main/samples/xxh64.js
+
 const fs = require('fs/promises')
 const path = require('path')
 
