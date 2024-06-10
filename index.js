@@ -12,15 +12,17 @@ function xxHashAddon(key) {
   return xxh64.digest()
 }
 
-function xxHashWasm(key) {
-  xxhashwasm().then(hasher => hasher.h64(key))
+async function xxHashWasm() {
+  const { h64 } = await xxhashwasm()
+  return h64
 }
 
 (async() => {
   await benchmark(xxHashAddon, 'xxhash-addon')
   await benchmark(xxhash64, 'noders-xxhash')
   await benchmark(hashwasmxxhash64, 'hash-wasm')
-  await benchmark(xxHashWasm, 'xxhash-wasm')
+  const h64 = await xxHashWasm()
+  await benchmark(h64, 'xxhash-wasm')
   const encantisxxh = await encantisxxh64()
   await benchmark(encantisxxh, 'encantis')
 })()
