@@ -12,9 +12,6 @@ module.exports.benchmark = async function benchmark(xxhash, name) {
   });
   obs.observe({ entryTypes: ['measure'] });
   
-  // console.log(keys[0])
-  // console.log(await xxhash('foo'))
-  
   const startTime = performance.now()
   for (let i = 0; i < iterations; i++) {
     await xxhash(keys[i])
